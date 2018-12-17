@@ -1,0 +1,4 @@
+﻿{
+    "connectionString": "mongodb://localhost/mloa-database-local",
+    "secret": "Gy1Tk2IVj87vEjvL"
+}
