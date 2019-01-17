@@ -6,6 +6,10 @@ const schema = new Schema({
     hash: { type: String, required: true },
     firstName: { type: String, required: true },
     lastName: { type: String, required: true },
+    currentLevel: { type: Number, default: 1, min: 1 },
+    totalExp: { type: Number, default: 0, min: 0 },
+    completedTasks: { type: Number, default: 0, min: 0 },
+    money: { type: Number, default: 50, min: 0 },
     createdDate: { type: Date, default: Date.now }
 });
 

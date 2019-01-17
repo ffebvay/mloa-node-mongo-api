@@ -5,6 +5,7 @@ const Task = db.Task;
 module.exports = {
     getAll,
     getById,
+    getByUser,
     create,
     update,
     delete: _delete
@@ -16,6 +17,17 @@ async function getAll() {
 
 async function getById(id) {
     return await Task.findById(id);
+}
+
+async function getByUser(uId) {
+    let query = {};
+    query['userId'] = uId;
+
+    return await Task.find(query, function(err, tasks) {
+        if (err) {
+            throw 'Tasks not found for the current user';
+        }
+    });
 }
 
 async function create(taskParam) {

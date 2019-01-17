@@ -5,6 +5,7 @@ const taskService = require('./task.service');
 // routes
 router.post('/add', addTask);
 router.get('/', getAll);
+router.get('/user/:userId', getAllByUser);
 router.get('/current', getCurrent);
 router.get('/:id', getById);
 router.put('/update/:id', update);
@@ -15,6 +16,12 @@ module.exports = router;
 function getAll(req, res, next) {
     taskService.getAll()
         .then(tasks => res.json(tasks))
+        .catch(err => next(err));
+}
+
+function getAllByUser(req, res, next) {
+    taskService.getByUser(req.params.userId)
+        .then(tasks => tasks ? res.json(tasks) : res.sendStatus(404))
         .catch(err => next(err));
 }
 

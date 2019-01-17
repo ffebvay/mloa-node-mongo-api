@@ -15,6 +15,7 @@ const schema = new Schema({
             'Valid priority values are 1, 1.5, 2.',
         ]
     },
+    grantExp: { type: Number, default: 5 },
     createdDate: { type: Date, default: Date.now },
     updatedAt: { type: Date, default: Date.now }
 });
