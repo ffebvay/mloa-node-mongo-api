@@ -1,6 +1,12 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+// TODO - NEW: Adding checklist concept
+const checkSchema = new Schema({
+    completed: { type: Boolean, default: false },
+    text: { type: String, required: false, default: '' }
+})
+
 const schema = new Schema({
     userId: { type: String, ref: 'User' },
     text: { type: String, required: true },
@@ -17,7 +23,12 @@ const schema = new Schema({
     },
     grantExp: { type: Number, default: 5 },
     createdDate: { type: Date, default: Date.now },
-    updatedAt: { type: Date, default: Date.now }
+    updatedAt: { type: Date, default: Date.now },
+
+    // TODO - NEW: Adding checklist concept
+    checklist: [
+        checkSchema
+    ]
 });
 
 schema.set('toJSON', { virtuals: true });
