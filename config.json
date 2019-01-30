@@ -1,4 +1,10 @@
 ﻿{
     "connectionString": "mongodb://localhost/mloa-database-local",
-    "secret": "Gy1Tk2IVj87vEjvL"
+    "secret": "Gy1Tk2IVj87vEjvL",
+    "facebookCredentials": {
+      "app_id": "790771641265142",
+      "app_secret": "04c01e8890e20afa28d4544aa942c1b0",
+      "access_token": "790771641265142|OgG14SzDPS5ryi0Jsbz6NxuAbdI",
+      "mloa_page": "MissionLocale11"
+    }
 }

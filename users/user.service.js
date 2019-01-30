@@ -13,8 +13,8 @@ module.exports = {
     delete: _delete
 };
 
-async function authenticate({ username, password }) {
-    const user = await User.findOne({ username });
+async function authenticate({ email, password }) {
+    const user = await User.findOne({ email });
     if (user && bcrypt.compareSync(password, user.hash)) {
         const { hash, ...userWithoutHash } = user.toObject();
         const token = jwt.sign({ sub: user.id }, config.secret);
@@ -36,8 +36,8 @@ async function getById(id) {
 
 async function create(userParam) {
     // validate
-    if (await User.findOne({ username: userParam.username })) {
-        throw 'Username "' + userParam.username + '" is already taken';
+    if (await User.findOne({ email: userParam.email })) {
+        throw 'E-mail "' + userParam.email + '" is already used by another account';
     }
 
     const user = new User(userParam);
@@ -56,8 +56,8 @@ async function update(id, userParam) {
 
     // validate
     if (!user) throw 'User not found';
-    if (user.username !== userParam.username && await User.findOne({ username: userParam.username })) {
-        throw 'Username "' + userParam.username + '" is already taken';
+    if (user.email !== userParam.email && await User.findOne({ email: userParam.email })) {
+        throw 'E-mail "' + userParam.email + '" is already used by another account';
     }
 
     // hash password if it was entered
@@ -66,9 +66,14 @@ async function update(id, userParam) {
     }
 
     // copy userParam properties to user
+    // then return the saved object to be able to keep track of it locally
     Object.assign(user, userParam);
 
     await user.save();
+
+    return {
+        user
+    };
 }
 
 async function _delete(id) {
