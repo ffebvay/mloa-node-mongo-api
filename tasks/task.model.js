@@ -25,12 +25,17 @@ const schema = new Schema({
     createdDate: { type: Date, default: Date.now },
     updatedAt: { type: Date, default: Date.now },
 
-    // TODO - NEW: Adding checklist concept
+    // TODO - NEW: Added checklist concept
     checklist: [
         checkSchema
-    ]
+    ],
+
+    // TODO - New: Adding due/ completed dates
+    dueDate: { type: Date },
+    completedDate: { type: Date }
 });
 
+schema.set('versionKey', false);
 schema.set('toJSON', { virtuals: true });
 
 module.exports = mongoose.model('Task', schema);
