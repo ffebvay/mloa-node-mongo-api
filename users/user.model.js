@@ -17,13 +17,22 @@ const schema = new Schema({
     hash: { type: String, required: true },
 
     // NEW: Class system
-    job: { type: String, enum: ['sans', 'esthetique', 'agriculture', 'transport', 'restauration', 'commerce', 'tourisme', 'batiment'], default: 'sans', required: true },
+    job: { type: String, enum: ['sans', 'esthetique', 'agriculture', 'transport', 'restauration', 'commerce', 'tourisme', 'batiment'], default: 'sans' },
     jobLevel: { type: Number, default: 1, min: 1 },
     currentExp: { type: Number, default: 0, min: 0 },
+    stage: {
+        type: Number,
+        default: 1,
+        validate: [
+            (val) => [1, 2, 3, 4].indexOf(val) !== -1,
+            'Valid priority values are 1, 2, 3 and 4',
+        ]
+    }, // represents each "level" at which the user will visually evolve
 
     // NEW: Avatar characteristics
-    genre: { type: String, default: 'masculin' },
-    hairColor: { type: String, default: 'brun' },
+    genre: { type: String, default: 'MAN' },
+    hairColor: { type: String, default: 'BROWN' },
+    skinColor: { type: String, default: 'COFFEE' },
 
     completedTasks: { type: Number, default: 0, min: 0 },
     isVerified: { type: Boolean, default: false },
