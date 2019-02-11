@@ -40,6 +40,26 @@ const schema = new Schema({
     updatedAt: { type: Date, default: Date.now },
     flags: {
         welcomed: { type: Boolean, default: false }
+    },
+
+    // NEW: Additional information
+    info: {
+        advisorFirstName: { type: String, default: '' },
+        advisorLastName: { type: String, default: '' },
+        advisorEmail: {
+            type: String,
+            default: '',
+            validate: (value) => {
+                return validator.isEmail(value);
+            }
+        },
+        advisorPhone: {
+            default: '',
+            type: String,
+            validate: (value) => {
+                return validator.isMobilePhone(value, 'fr-FR');
+            }
+        }
     }
 });
 
