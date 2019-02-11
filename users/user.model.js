@@ -44,22 +44,10 @@ const schema = new Schema({
 
     // NEW: Additional information
     info: {
-        advisorFirstName: { type: String, default: '' },
-        advisorLastName: { type: String, default: '' },
-        advisorEmail: {
-            type: String,
-            default: '',
-            validate: (value) => {
-                return validator.isEmail(value);
-            }
-        },
-        advisorPhone: {
-            default: '',
-            type: String,
-            validate: (value) => {
-                return validator.isMobilePhone(value, 'fr-FR');
-            }
-        }
+        advisorFirstName: { type: String, default: '', required: false },
+        advisorLastName: { type: String, default: '', required: false },
+        advisorEmail: { type: String, default: '', required: false},
+        advisorPhone: { type: String, default: '', required: false }
     }
 });
 
