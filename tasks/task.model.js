@@ -21,7 +21,7 @@ const schema = new Schema({
             'Valid priority values are 1, 1.5, 2.',
         ]
     },
-    grantExp: { type: Number, default: 5 },
+    grantExp: { type: Number, default: 20 }, // TODO: DANGER -> make sure it doesn't give too much XP on task completion (5 is good)
     createdDate: { type: Date, default: Date.now },
     updatedAt: { type: Date, default: Date.now },
 
