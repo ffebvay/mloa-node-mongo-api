@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-// TODO - NEW: Adding checklist concept
 const checkSchema = new Schema({
     completed: { type: Boolean, default: false },
     text: { type: String, required: false, default: '' }
@@ -25,12 +24,12 @@ const schema = new Schema({
     createdDate: { type: Date, default: Date.now },
     updatedAt: { type: Date, default: Date.now },
 
-    // TODO - NEW: Added checklist concept
+    // Checklists
     checklist: [
         checkSchema
     ],
 
-    // TODO - New: Adding due/ completed dates
+    // Deadlines, completion date
     dueDate: { type: Date },
     completedDate: { type: Date }
 });
