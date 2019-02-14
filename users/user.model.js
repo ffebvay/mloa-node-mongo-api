@@ -47,6 +47,8 @@ const schema = new Schema({
     genre: { type: String, default: 'MAN' },
     hairColor: { type: String, default: 'BROWN' },
     skinColor: { type: String, default: 'COFFEE' },
+    // NEW: Haircut
+    haircut: { type: String, default: 'HAIR01' },
 
     completedTasks: { type: Number, default: 0, min: 0 },
     isVerified: { type: Boolean, default: false },
@@ -71,6 +73,7 @@ const schema = new Schema({
     ]
 });
 
+schema.set('versionKey', false);
 schema.set('toJSON', { virtuals: true });
 
 module.exports = mongoose.model('User', schema);
