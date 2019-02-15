@@ -16,6 +16,7 @@ app.use(jwt());
 // prefix all API routes with "/api" for future use
 app.use('/api/users', require('./users/users.controller'));
 app.use('/api/tasks', require('./tasks/tasks.controller'));
+app.use('/api/activities', require('./activities/activity.controller'));
 
 // global error handler
 app.use(errorHandler);
